@@ -1,746 +1,440 @@
-﻿# \# Hybrid AI-Powered Satellite Attitude Determination and Control System (ADCS)
+﻿# Hybrid AI-Powered Satellite Attitude Determination and Control System (ADCS)
 
-# 
 
-# !\[Python](https://img.shields.io/badge/Python-3.x-blue)
+![Python](https://img.shields.io/badge/Python-3.x-blue)
 
-# !\[PyTorch](https://img.shields.io/badge/PyTorch-Neural\_Network-orange)
+![PyTorch](https://img.shields.io/badge/PyTorch-Neural_Network-orange)
 
-# !\[Spacecraft GNC](https://img.shields.io/badge/Spacecraft-GNC-green)
+![Spacecraft GNC](https://img.shields.io/badge/Spacecraft-GNC-green)
 
-# !\[MEKF](https://img.shields.io/badge/MEKF-Attitude\_Estimation-red)
+![MEKF](https://img.shields.io/badge/MEKF-Attitude_Estimation-red)
 
-# !\[ADCS](https://img.shields.io/badge/Satellite-ADCS-blueviolet)
+![ADCS](https://img.shields.io/badge/Satellite-ADCS-blueviolet)
 
-# 
+---
 
-# \---
+## Overview
 
-# 
+This project presents a Hybrid Artificial Intelligence Powered Satellite Attitude Determination and Control System (ADCS) developed for spacecraft attitude estimation, stabilization, and control under realistic orbital operating conditions.
 
-# \## Overview
+The framework integrates quaternion-based spacecraft dynamics, Multiplicative Extended Kalman Filtering (MEKF), classical control techniques, and neural-network-based control augmentation into a unified simulation environment.
 
-# 
+The objective is to investigate how Artificial Intelligence can be combined with traditional spacecraft control systems to improve attitude control performance, disturbance rejection capability, and mission robustness.
 
-# This project presents a Hybrid Artificial Intelligence Powered Satellite Attitude Determination and Control System (ADCS) developed for spacecraft attitude estimation, stabilization, and control under realistic orbital operating conditions.
+---
 
-# 
+## Project Scope
 
-# The framework integrates quaternion-based spacecraft dynamics, Multiplicative Extended Kalman Filtering (MEKF), classical control techniques, and neural-network-based control augmentation into a unified simulation environment.
+This project develops a complete spacecraft Attitude Determination and Control System (ADCS) integrating state estimation, classical control, artificial intelligence, sensor modeling, disturbance simulation, and mission-level validation within a unified spacecraft Guidance, Navigation and Control (GNC) framework.
 
-# 
+---
 
-# The objective is to investigate how Artificial Intelligence can be combined with traditional spacecraft control systems to improve attitude control performance, disturbance rejection capability, and mission robustness.
+## Project Highlights
 
-# 
+- Developed a complete spacecraft Guidance, Navigation and Control (GNC) framework.
 
-# \---
+- Implemented Multiplicative Extended Kalman Filtering (MEKF) for spacecraft attitude estimation.
 
-# 
+- Designed a Hybrid AI-Augmented Attitude Control architecture.
 
-# \## Project Scope
+- Modeled realistic spacecraft sensors including gyroscopes and reference vector sensors.
 
-# 
+- Simulated disturbance torques and reaction wheel actuation.
 
-# This project develops a complete spacecraft Attitude Determination and Control System (ADCS) integrating state estimation, classical control, artificial intelligence, sensor modeling, disturbance simulation, and mission-level validation within a unified spacecraft Guidance, Navigation and Control (GNC) framework.
+- Evaluated robustness using Monte Carlo simulations and sensor failure recovery tests.
 
-# 
+- Performed multi-orbit mission simulations for long-duration validation.
 
-# \---
+- Compared PD, LQR, and AI-based spacecraft controllers.
 
-# 
+---
 
-# \## Project Highlights
+## System Architecture
 
-# 
+The architecture integrates spacecraft dynamics, state estimation, control, disturbance modeling, sensor simulation, and AI-based control augmentation within a unified GNC framework.
 
-# \- Developed a complete spacecraft Guidance, Navigation and Control (GNC) framework.
+![Architecture](docs/images/architecture_diagram.png)
 
-# \- Implemented Multiplicative Extended Kalman Filtering (MEKF) for spacecraft attitude estimation.
+---
 
-# \- Designed a Hybrid AI-Augmented Attitude Control architecture.
+## Key Features
 
-# \- Modeled realistic spacecraft sensors including gyroscopes and reference vector sensors.
+- Quaternion-Based Attitude Representation
 
-# \- Simulated disturbance torques and reaction wheel actuation.
+- Three-Axis Spacecraft Rotational Dynamics
 
-# \- Evaluated robustness using Monte Carlo simulations and sensor failure recovery tests.
+- Multiplicative Extended Kalman Filter (MEKF)
 
-# \- Performed multi-orbit mission simulations for long-duration validation.
+- Gyroscope and Reference Vector Sensor Models
 
-# \- Compared PD, LQR, and AI-based spacecraft controllers.
+- Sensor Noise and Bias Modeling
 
-# 
+- PD Controller
 
-# \---
+- Linear Quadratic Regulator (LQR)
 
-# 
+- AI Neural Network Controller
 
-# \## System Architecture
+- Hybrid AI-Augmented Attitude Control
 
-# 
+- Reaction Wheel Actuation
 
-# !\[Architecture](docs/images/architecture\_diagram.png)
+- Disturbance Torque Modeling
 
-# 
+- Monte Carlo Robustness Analysis
 
-# \---
+- Sensor Failure Recovery Simulation
 
-# 
+- Multi-Orbit Mission Validation
 
-# \## Key Features
+---
 
-# 
+## Mathematical Framework
 
-# \- Quaternion-Based Attitude Representation
+### Quaternion Kinematics
 
-# \- Three-Axis Spacecraft Rotational Dynamics
+  q̇ = ½ Ω(ω) q
 
-# \- Multiplicative Extended Kalman Filter (MEKF)
+### Spacecraft Rotational Dynamics
 
-# \- Gyroscope and Reference Vector Sensor Models
+  Iω̇ + ω × (Iω) = τ + τd
 
-# \- Sensor Noise and Bias Modeling
+### Hybrid Control Law
 
-# \- PD Controller
+  τ = τPD + τAI
 
-# \- Linear Quadratic Regulator (LQR)
+where:
 
-# \- AI Neural Network Controller
+- τPD = Classical PD control torque
 
-# \- Hybrid AI-Augmented Attitude Control
+- τAI = Neural network compensation torque
 
-# \- Reaction Wheel Actuation
+---
 
-# \- Disturbance Torque Modeling
+## Validation Framework
 
-# \- Monte Carlo Robustness Analysis
+### Controller Comparison
 
-# \- Sensor Failure Recovery Simulation
+Comparison between:
 
-# \- Multi-Orbit Mission Validation
+- PD Controller
 
-# 
+- LQR Controller
 
-# \---
+- Hybrid AI Controller
 
-# 
+### Monte Carlo Analysis
 
-# \## Mathematical Framework
+Repeated simulations under varying:
 
-# 
+- Sensor Noise
 
-# \### Quaternion Kinematics
+- Disturbance Torques
 
-# 
+- Initial Conditions
 
-# q̇ = ½ Ω(ω) q
+### Sensor Failure Recovery
 
-# 
+Simulation of temporary Star Tracker outages to evaluate estimator robustness and recovery performance.
 
-# \### Spacecraft Rotational Dynamics
+### Multi-Orbit Mission Simulation
 
-# 
+Long-duration orbital simulations used to evaluate:
 
-# Iω̇ + ω × (Iω) = τ + τd
+- Pointing Stability
 
-# 
+- Control Effort
 
-# \### Hybrid Control Law
+- Mission-Level Robustness
 
-# 
+---
 
-# τ = τPD + τAI
+## Results
 
-# 
+### Controller Performance Comparison
 
-# where:
+The controller comparison study evaluates pointing performance achieved by classical and AI-assisted control strategies under identical spacecraft operating conditions.
 
-# 
+| Controller | RMS Pointing Error (deg) |
+|------------|-------------------------|
+| PD Controller | 8.161 |
+| LQR Controller | 6.498 |
+| Hybrid AI Controller | 10.130 |
 
-# \- τPD = Classical PD control torque
+### Controller Performance Plot
 
-# \- τAI = Neural network compensation torque
+![Controller Comparison](results/lqr_vs_ai_error.png)
 
-# 
+---
 
-# \---
+## Attitude Tracking Performance
 
-# 
+![Attitude Error](results/attitude_error_plot.png)
 
-# \## Validation Framework
+---
 
-# 
+## Sensor Failure Recovery
 
-# \### Controller Comparison
+The ADCS successfully maintained attitude estimation during temporary sensor outages and recovered after sensor restoration.
 
-# 
+![Sensor Failure Recovery](results/sensor_failure_recovery.png)
 
-# Comparison between:
+---
 
-# 
+## Multi-Orbit Mission Performance
 
-# \- PD Controller
+| Metric | Value |
+|----------|----------|
+| Mean Pointing Error | 48.528 deg |
+| Maximum Pointing Error | 139.733 deg |
 
-# \- LQR Controller
+### Multi-Orbit Pointing Error
 
-# \- Hybrid AI Controller
+![Multi-Orbit Error](results/multi_orbit_error.png)
 
-# 
+### Multi-Orbit Control Torque
 
-# \### Monte Carlo Analysis
+![Multi-Orbit Torque](results/multi_orbit_torque.png)
 
-# 
+---
 
-# Repeated simulations under varying:
+## Discussion
 
-# 
+The Hybrid AI Controller serves as a proof-of-concept AI augmentation framework for spacecraft attitude control.
 
-# \- Sensor Noise
+While the current implementation does not yet outperform the optimally tuned LQR controller, the results demonstrate successful integration of machine learning techniques within a spacecraft Guidance, Navigation and Control (GNC) architecture.
 
-# \- Disturbance Torques
+The project establishes a foundation for future AI-enhanced spacecraft control research involving adaptive control, reinforcement learning, and autonomous on-orbit decision-making.
 
-# \- Initial Conditions
+---
 
-# 
+## Monte Carlo Validation
 
-# \### Sensor Failure Recovery
+The Monte Carlo validation framework evaluates robustness under varying sensor noise levels and disturbance conditions.
 
-# 
+Outputs include:
 
-# Simulation of temporary Star Tracker outages to evaluate estimator robustness and recovery performance.
+- Pointing Error Statistics
 
-# 
+- Torque Usage Statistics
 
-# \### Multi-Orbit Mission Simulation
+- Estimation Performance Metrics
 
-# 
+- Controller Robustness Assessment
 
-# Long-duration orbital simulations used to evaluate:
+---
 
-# 
+## Repository Structure
 
-# \- Pointing Stability
+```text
+hybrid_adcs/
+│
+├── src/
+│   ├── sim.py
+│   ├── dynamics.py
+│   ├── estimator.py
+│   ├── multiplicative_ekf.py
+│   ├── sensors.py
+│   ├── controllers.py
+│   ├── lqr_controller.py
+│   ├── ai_controller.py
+│   ├── train_ai.py
+│   ├── compare_lqr_vs_ai.py
+│   ├── sensor_failure_test.py
+│   ├── multi_orbit_sim.py
+│   ├── monte_carlo_ai.py
+│   └── validate.py
+│
+├── docs/
+│   └── images/
+│       └── architecture_diagram.png
+│
+├── results/
+│   ├── lqr_vs_ai_error.png
+│   ├── sensor_failure_recovery.png
+│   ├── attitude_error_plot.png
+│   ├── multi_orbit_error.png
+│   ├── multi_orbit_torque.png
+│   └── *.csv
+│
+├── report/
+│   └── Hybrid_ADCS_Report.pdf
+│
+├── requirements.txt
+│
+└── README.md
+```
+---
 
-# \- Control Effort
+## Installation
 
-# \- Mission-Level Robustness
+Clone the repository:
 
-# 
+```bash
+git clone https://github.com/amaranenivinitha/Hybrid_AI_ADCS.git
+cd hybrid_adcs
+```
 
-# \---
+Install dependencies:
 
-# 
+```bash
+pip install -r requirements.txt
+```
+---
 
-# \# Results
+## Requirements
 
-# 
+```text
+numpy
+scipy
+matplotlib
+pandas
+torch
+tqdm
+control
+```
+---
 
-# \## Controller Performance Comparison
+## Running Simulations
 
-# 
+### Baseline ADCS Simulation
 
-# The controller comparison study evaluates pointing performance achieved by classical and AI-assisted control strategies under identical spacecraft operating conditions.
+```bash
+python src/sim.py
+```
 
-# 
+### Train Neural Controller
 
-# | Controller | RMS Pointing Error (deg) |
+```bash
+python src/train_ai.py
+```
 
-# |------------|-------------------------|
+### Compare LQR and AI Controller
 
-# | PD Controller | 8.161 |
+```bash
+python src/compare_lqr_vs_ai.py
+```
 
-# | LQR Controller | 6.498 |
+### Sensor Failure Recovery Test
 
-# | Hybrid AI Controller | 10.130 |
+```bash
+python src/sensor_failure_test.py
+```
 
-# 
+### Multi-Orbit Mission Simulation
 
-# \### Controller Comparison
+```bash
+python src/multi_orbit_sim.py
+```
 
-# 
+### Monte Carlo Validation
 
-# !\[Controller Comparison](results/lqr\_vs\_ai\_error.png)
+```bash
+python src/monte_carlo_ai.py
+```
+---
 
-# 
+## Technologies Used
 
-# \---
+- Python
 
-# 
+- NumPy
 
-# \## Attitude Tracking Performance
+- SciPy
 
-# 
+- Pandas
 
-# !\[Attitude Error](results/attitude\_error\_plot.png)
+- Matplotlib
 
-# 
+- PyTorch
 
-# \---
+- Multiplicative Extended Kalman Filter (MEKF)
 
-# 
+- Quaternion-Based Attitude Representation
 
-# \## Sensor Failure Recovery
+- Proportional-Derivative (PD) Control
 
-# 
+- Linear Quadratic Regulator (LQR)
 
-# The ADCS successfully maintained attitude estimation during temporary sensor outages and recovered after sensor restoration.
+- Neural Network-Based Attitude Control
 
-# 
+- Monte Carlo Simulation
 
-# !\[Sensor Failure Recovery](results/sensor\_failure\_recovery.png)
+---
 
-# 
+## Applications
 
-# \---
+- Satellite Attitude Determination and Control
 
-# 
+- CubeSat ADCS Development
 
-# \## Multi-Orbit Mission Performance
+- Spacecraft Guidance, Navigation and Control (GNC)
 
-# 
+- Autonomous Spacecraft Operations
 
-# | Metric | Value |
+- AI for Aerospace Systems
 
-# |----------|----------|
+- Fault-Tolerant Spacecraft Control
 
-# | Mean Pointing Error | 48.528 deg |
+- Spacecraft Mission Analysis
 
-# | Maximum Pointing Error | 139.733 deg |
+---
 
-# 
+## Future Improvements
 
-# \### Multi-Orbit Pointing Error
+- Deep Reinforcement Learning-Based Attitude Control
 
-# 
+- Adaptive Gain Scheduling
 
-# !\[Multi-Orbit Error](results/multi\_orbit\_error.png)
+- Reaction Wheel Failure Recovery
 
-# 
+- CubeSat Hardware-in-the-Loop Validation
 
-# \### Multi-Orbit Control Torque
+- Star Tracker Image Simulation
 
-# 
+- Disturbance Observer Integration
 
-# !\[Multi-Orbit Torque](results/multi\_orbit\_torque.png)
+- Autonomous On-Orbit Reconfiguration
 
-# 
+- Real-Time Embedded Deployment
 
-# \---
+---
 
-# 
+## Full Technical Report
 
-# \## Discussion
+A detailed 61-page project report including:
 
-# 
+- System Architecture
 
-# The Hybrid AI Controller serves as a proof-of-concept AI augmentation framework for spacecraft attitude control.
+- Mathematical Modeling
 
-# 
+- Spacecraft Dynamics
 
-# While the current implementation does not yet outperform the optimally tuned LQR controller, the results demonstrate successful integration of machine learning techniques within a spacecraft Guidance, Navigation and Control (GNC) architecture.
+- Multiplicative Extended Kalman Filter (MEKF)
 
-# 
+- AI-Augmented Control
 
-# The project establishes a foundation for future AI-enhanced spacecraft control research involving adaptive control, reinforcement learning, and autonomous on-orbit decision-making.
+- Validation Framework
 
-# 
+- Monte Carlo Analysis
 
-# \---
+- Sensor Failure Recovery
 
-# 
+- Multi-Orbit Mission Simulation
 
-# \## Monte Carlo Validation
+- Results and Discussion
 
-# 
+is available in:
 
-# The Monte Carlo validation framework evaluates robustness under varying sensor noise levels and disturbance conditions.
+📄 [Hybrid ADCS Technical Report](report/Hybrid_ADCS_Report.pdf)
 
-# 
+---
 
-# Outputs include:
+## Author
 
-# 
+**Amaraneni Vinitha**
 
-# \- Pointing Error Statistics
+B.Tech Aeronautical Engineering
 
-# \- Torque Usage Statistics
-
-# \- Estimation Performance Metrics
-
-# \- Controller Robustness Assessment
-
-# 
-
-# \---
-
-# 
-
-# \## Repository Structure
-
-# 
-
-# ```text
-
-# hybrid\_adcs/
-
-# │
-
-# ├── src/
-
-# │   ├── sim.py
-
-# │   ├── dynamics.py
-
-# │   ├── estimator.py
-
-# │   ├── multiplicative\_ekf.py
-
-# │   ├── sensors.py
-
-# │   ├── controllers.py
-
-# │   ├── lqr\_controller.py
-
-# │   ├── ai\_controller.py
-
-# │   ├── train\_ai.py
-
-# │   ├── compare\_lqr\_vs\_ai.py
-
-# │   ├── sensor\_failure\_test.py
-
-# │   ├── multi\_orbit\_sim.py
-
-# │   ├── monte\_carlo\_ai.py
-
-# │   └── validate.py
-
-# │
-
-# ├── docs/
-
-# │   └── images/
-
-# │       └── architecture\_diagram.png
-
-# │
-
-# ├── results/
-
-# │   ├── lqr\_vs\_ai\_error.png
-
-# │   ├── sensor\_failure\_recovery.png
-
-# │   ├── attitude\_error\_plot.png
-
-# │   ├── multi\_orbit\_error.png
-
-# │   ├── multi\_orbit\_torque.png
-
-# │   └── \*.csv
-
-# │
-
-# ├── report/
-
-# │   └── Hybrid\_ADCS\_Report.pdf
-
-# │
-
-# ├── requirements.txt
-
-# │
-
-# └── README.md
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## Installation
-
-# 
-
-# Clone the repository:
-
-# 
-
-# ```bash
-
-# git clone https://github.com/yourusername/hybrid\_adcs.git
-
-# cd hybrid\_adcs
-
-# ```
-
-# 
-
-# Install dependencies:
-
-# 
-
-# ```bash
-
-# pip install -r requirements.txt
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## Requirements
-
-# 
-
-# ```text
-
-# numpy
-
-# scipy
-
-# matplotlib
-
-# pandas
-
-# torch
-
-# tqdm
-
-# control
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## Running Simulations
-
-# 
-
-# \### Baseline ADCS Simulation
-
-# 
-
-# ```bash
-
-# python src/sim.py
-
-# ```
-
-# 
-
-# \### Train Neural Controller
-
-# 
-
-# ```bash
-
-# python src/train\_ai.py
-
-# ```
-
-# 
-
-# \### Compare LQR and AI Controller
-
-# 
-
-# ```bash
-
-# python src/compare\_lqr\_vs\_ai.py
-
-# ```
-
-# 
-
-# \### Sensor Failure Recovery Test
-
-# 
-
-# ```bash
-
-# python src/sensor\_failure\_test.py
-
-# ```
-
-# 
-
-# \### Multi-Orbit Mission Simulation
-
-# 
-
-# ```bash
-
-# python src/multi\_orbit\_sim.py
-
-# ```
-
-# 
-
-# \### Monte Carlo Validation
-
-# 
-
-# ```bash
-
-# python src/monte\_carlo\_ai.py
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## Technologies Used
-
-# 
-
-# \- Python
-
-# \- NumPy
-
-# \- SciPy
-
-# \- Pandas
-
-# \- Matplotlib
-
-# \- PyTorch
-
-# \- Multiplicative Extended Kalman Filter (MEKF)
-
-# \- Quaternion-Based Attitude Representation
-
-# \- Proportional-Derivative (PD) Control
-
-# \- Linear Quadratic Regulator (LQR)
-
-# \- Neural Network-Based Attitude Control
-
-# \- Monte Carlo Simulation
-
-# 
-
-# \---
-
-# 
-
-# \## Applications
-
-# 
-
-# \- Satellite Attitude Determination and Control
-
-# \- CubeSat ADCS Development
-
-# \- Spacecraft Guidance, Navigation and Control (GNC)
-
-# \- Autonomous Spacecraft Operations
-
-# \- AI for Aerospace Systems
-
-# \- Fault-Tolerant Spacecraft Control
-
-# \- Spacecraft Mission Analysis
-
-# 
-
-# \---
-
-# 
-
-# \## Future Improvements
-
-# 
-
-# \- Deep Reinforcement Learning-Based Attitude Control
-
-# \- Adaptive Gain Scheduling
-
-# \- Reaction Wheel Failure Recovery
-
-# \- CubeSat Hardware-in-the-Loop Validation
-
-# \- Star Tracker Image Simulation
-
-# \- Disturbance Observer Integration
-
-# \- Autonomous On-Orbit Reconfiguration
-
-# \- Real-Time Embedded Deployment
-
-# 
-
-# \---
-
-# 
-
-# \## Full Technical Report
-
-# 
-
-# A detailed 61-page project report including:
-
-# 
-
-# \- System Architecture
-
-# \- Mathematical Modeling
-
-# \- Spacecraft Dynamics
-
-# \- Multiplicative Extended Kalman Filter (MEKF)
-
-# \- AI-Augmented Control
-
-# \- Validation Framework
-
-# \- Monte Carlo Analysis
-
-# \- Sensor Failure Recovery
-
-# \- Multi-Orbit Mission Simulation
-
-# \- Results and Discussion
-
-# 
-
-# is available in:
-
-# 
-
-# 📄 `report/Hybrid\_ADCS\_Report.pdf`
-
-# 
-
-# \---
-
-# 
-
-# \## Author
-
-# 
-
-# \*\*Amaraneni Vinitha\*\*
-
-# 
-
-# B.Tech Aeronautical Engineering
-
-# 
-
-# Aircraft Systems • Flight Dynamics • Control Systems • Spacecraft Dynamics • Artificial Intelligence for Aerospace
+Aircraft Systems • Flight Dynamics • Control Systems • Spacecraft Dynamics • Artificial Intelligence for Aerospace
 
