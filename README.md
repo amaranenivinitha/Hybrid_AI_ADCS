@@ -243,7 +243,13 @@ hybrid_adcs/
 │   ├── sensor_failure_test.py
 │   ├── multi_orbit_sim.py
 │   ├── monte_carlo_ai.py
-│   └── validate.py
+│   ├── space_disturbances.py 
+│   ├── validate.py 
+│   ├── validate_ai.py 
+│   ├── scale_search.py
+│   ├── diagnose.py 
+│   ├── quaternion_utils.py
+│   └── animate_from_quat_earth_texture.py
 │
 ├── docs/
 │   └── images/
